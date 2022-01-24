@@ -1,0 +1,45 @@
+<!-- <p>add-employee works!</p> -->
+<h3 align="center">Create Employee</h3>
+<div id="page" [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" class="form-control" id="Name" required [(ngModel)]="employee.empName" name="empName" placeholder=" enter fullname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" required [(ngModel)]="employee.email" name="email" placeholder="ex: xyz@abc.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone.no</label>
+      <input type="number" class="form-control" id="phone" required [(ngModel)]="employee.phone" name="phone" placeholder="10 digits number" required>
+    </div>
+
+    <div class="form-group">
+        <label for="deptId">Department Id</label>
+        <select  class="form-control" id="deptId" required [(ngModel)]="employee.dept_id" name="DeptId" placeholder="Select Department" required>
+            <option value="1">Product</option>
+            <option value="2">sales</option>
+            <option value="3">HR</option>
+        </select>
+    </div>
+
+      <div class="form-group"><label for="desgId">Department Id</label>
+        <select  class="form-control" id="desgId" required [(ngModel)]="employee.desg_id" name="DesgId" placeholder="Select Designation" required>
+            <option value="1">Manager</option>
+            <option value="2">HR</option>
+            <option value="3">SDE</option>
+            <option value="4">Software Engineer</option>
+        </select>
+    </div>
+
+    <button id="sub" type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div id="submit" [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

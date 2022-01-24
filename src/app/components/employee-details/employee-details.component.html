@@ -1,0 +1,27 @@
+<h2>Employee Details</h2> 
+
+<hr/>
+<div *ngIf="employee">
+  <div>
+    <label><b>FullName: </b></label> {{employee.empName}}
+  </div>
+  <div>
+    <label><b>Email: </b></label> {{employee.email}}
+  </div>
+  <div>
+    <label><b>Phone.No: </b></label> {{employee.phone}}
+  </div>  
+  <div>
+    <label><b>Department Id: </b></label> {{employee.dept_id}}
+  </div> 
+  <div>
+    <label><b>Designation Id: </b></label> {{employee.desg_id}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back</button><br>
+<button (click)="deleteEmployee(employee.empId)" class="btn btn-danger">Delete</button>
+<button (click)="empUpdate(employee.empId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+          

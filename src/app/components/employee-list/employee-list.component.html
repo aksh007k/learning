@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Employee List</h2>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="search by name"
+            [(ngModel)]="name"
+            />
+        <div class="input-group-append">
+            <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchName()">Search</button>
+        </div> 
+    </div>   
+
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Employee Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>DeptId</th>
+            <th>DesgId</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{employee.empId}}</td>
+            <td>{{employee.empName}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.phone}}</td>
+            <td>{{employee.dept_id}}</td>
+            <td>{{employee.desg_id}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
