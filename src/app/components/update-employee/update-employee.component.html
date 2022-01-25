@@ -1,30 +1,75 @@
 <p>update-employee works!</p>
 <h3>Update Employee</h3>
 <div style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" [formGroup]="userValid">
     <div class="form-group">
       <label for="name">Full Name</label>
-      <input type="text" class="form-control" id="Name" required [(ngModel)]="employee.empName" name="empName">
+      <input [class.is-invalid]="userValid.get('vName').invalid && userValid.get('vName').touched" formControlName="vName" type="text" class="form-control" id="Name" required [(ngModel)]="employee.empName" name="empName" placeholder=" enter fullname" >
+      <div *ngIf="(vname.invalid && vname.touched) || vname.dirty">
+        <small *ngIf="vname.errors?.required" class="text-danger">Name is required</small>
+        <!--question mark(?) is a safe navigation operator-->
+      </div>
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" required [(ngModel)]="employee.email" name="email">
+      <input [class.is-invalid]="userValid.get('pEmail').invalid && userValid.get('pEmail').touched" 
+      formControlName="pEmail" type="email" class="form-control" id="email" 
+      required [(ngModel)]="employee.email" name="email" placeholder="ex: xyz@abc.com">
+      <div *ngIf="(pemail.invalid && pemail.touched) || pemail.dirty">
+        <small *ngIf="pemail.errors?.required" class="text-danger">email is required</small>
+        <!--question mark(?) is a safe navigation operator-->
+        <small *ngIf="pemail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+        
+        <small *ngIf="pemail.errors?.duplicateEmailId">Email Id already exists !!</small>
+
+          
+      </div>
+
+      <!-- <span *ngIf="userValid.get('pemail').hasError('duplicateEmailId')">
+        * Email Id already exists !!
+    </span> -->
     </div>
 
     <div class="form-group">
       <label for="phone">Phone.no</label>
-      <input type="text" class="form-control" id="phone" required [(ngModel)]="employee.phone" name="phone">
+      <input [class.is-invalid]="userValid.get('vPhone').invalid && userValid.get('vPhone').touched" formControlName="vPhone" type="text" class="form-control" id="phone" required [(ngModel)]="employee.phone" name="phone" placeholder="10 digits number" required>
+      
+      <div *ngIf="(vphone.invalid && vphone.touched) || vphone.dirty">
+        <small *ngIf="vphone.errors?.required" class="text-danger">Phone.No is required</small>
+        <!--question mark(?) is a safe navigation operator-->
+        <small *ngIf="vphone.errors?.pattern" class="text-danger">Please provide 10 digits Phone.No </small>
+      </div>
+      
     </div>
 
     <div class="form-group">
         <label for="deptId">Department Id</label>
-        <input type="number" class="form-control" id="deptId" required [(ngModel)]="employee.dept_id" name="phone">
+        <select  [class.is-invalid]="userValid.get('vDept').invalid && userValid.get('vDept').touched" formControlName="vDept" class="form-control" id="deptId" required [(ngModel)]="employee.dept_id" name="DeptId" placeholder="Select Department" required>
+            <option value="1">Product</option>
+            <option value="2">sales</option>
+            <option value="3">HR</option>
+        </select>
+
+        <div *ngIf="(vdept.invalid && vdept.touched) || vdept.dirty">
+          <small *ngIf="vdept.errors?.required" class="text-danger">please select Department</small>
+          <!--question mark(?) is a safe navigation operator-->
+        </div>
     </div>
 
-      <div class="form-group">
-        <label for="desgId">Designation Id</label>
-        <input type="number" class="form-control" id="desgId" required [(ngModel)]="employee.desg_id" name="phone">
+      <div class="form-group"><label for="desgId">Department Id</label>
+        <select [class.is-invalid]="userValid.get('vDesg').invalid && userValid.get('vDesg').touched" formControlName="vDesg" class="form-control" id="desgId" required [(ngModel)]="employee.desg_id" name="DesgId" placeholder="Select Designation" required>
+            <option value="1">Manager</option>
+            <option value="2">HR</option>
+            <option value="3">SDE</option>
+            <option value="4">Software Engineer</option>
+        </select>
+
+        <div *ngIf="(vdesg.invalid && vdesg.touched) || vdesg.dirty">
+          <small *ngIf="vdesg.errors?.required" class="text-danger">please select Designation</small>
+          <!--question mark(?) is a safe navigation operator-->
+        </div>
+
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>

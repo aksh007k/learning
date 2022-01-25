@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { EmployeeDetailsComponent } from './components/employee-details/employee
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

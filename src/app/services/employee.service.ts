@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { EmailValidator } from '@angular/forms';
 //import { Employee } from '../model/employee.model';
 
 
@@ -37,5 +38,8 @@ export class EmployeeService {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-
+  emailCheckUnique(email: EmailValidator): Observable<any> {
+    return this.http.get(`${this.baseUrl}/email/${email}`);
+    }
+    
 }

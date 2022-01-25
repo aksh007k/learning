@@ -14,6 +14,9 @@ export class EmployeeListComponent implements OnInit {
 
   public employees: Employee[];
   name = '';
+  // currentEmp = null;
+  // currentIndex = -1;
+  
   
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
@@ -31,6 +34,17 @@ export class EmployeeListComponent implements OnInit {
     )
     
   }
+
+  // refreshList(): void {
+  //   this.retriveData();
+  //   this.currentEmp=null;
+  //   this.currentIndex=-1;
+  // }
+
+  // setActiveEmp(employee, index): void{
+  //   this.currentEmp = employee;
+  //   this.currentIndex= index;
+  // }
 
   searchName(): void{
     this.employeeService.getByName(this.name).subscribe

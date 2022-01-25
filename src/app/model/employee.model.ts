@@ -5,7 +5,7 @@ export class Employee {
     empId: number;
     empName: string;
     email: EmailValidator;
-    phone: number;
+    phone: string;
     dept_id: number;
     desg_id: number;
 }
